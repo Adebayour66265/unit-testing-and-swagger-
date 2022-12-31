@@ -44,6 +44,34 @@ const {
 *        email: ade@gmail.com
 *        isSeller: true
 */
+/**
+*  @swagger 
+*  components:
+*   schemas: 
+*    product:
+*      type: object
+*      required:
+*      - name 
+*      - price
+*      - image
+*      properties:
+*       id:
+*          type: INTEGER
+*          description:  auto-generated id
+*       name:
+*          type: STRING
+*          description: Name of the products
+*       price:
+*           type: STRING
+*           description: price of the product
+*       image:
+*           type: STRING
+*           description: Image URL
+*      example:
+*        name: Bag
+*        price: 500$
+*        image: .png/jpeg
+*/
 
 /**
  * @swagger
@@ -68,6 +96,48 @@ const {
  *          
  *          
  *          
+ */
+
+/**
+ * @swagger
+ * /api/user/signin:
+ *  get:
+ *    summary: Log User in
+ *    requestBody:
+ *      required: true
+ *      content:
+ *       application/json:
+ *         schema:
+ *           $ref: '#/components/schemas/User'
+ *    responses:
+ *      200:
+ *         description: user has successfully login    
+ *      404:
+ *         description: The user is already exists
+ *      400:
+ *         description: The user is validation failed
+ *      500: 
+ *         description: internal Server Error
+ */
+
+/**
+ * @swagger
+ * /api/product/create:
+ *  post:
+ *    summary: post product details
+ *    requestBody:
+ *      required: true
+ *      content:
+ *       application/json:
+ *         schema:
+ *           $ref: '#/components/schemas/product'
+ *    responses:
+ *      200:
+ *         description: product has successfully upload
+ *      400:
+ *         description: upload product failed
+ *      500: 
+ *         description: internal Server Error
  */
 router.post('/signup', async (req, res) => {
     try {
