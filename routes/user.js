@@ -15,15 +15,15 @@ const {
 /**
 *  @swagger 
 *  components:
-*  schemas: 
+*   schemas: 
 *    User:
 *      type: object
-*      require:
+*      required:
 *      - name
 *      - email 
 *      - password
 *      - isSeller
-*    properties:
+*      properties:
 *       id:
 *          type: INTEGER
 *          description:  auto-generated id
@@ -39,11 +39,36 @@ const {
 *       isSeller:
 *           type: BOOLEN
 *           description: IS SELLER OR NOT
-*       example:
-*           name: Nurudeen
-*           email: ade@gmail.com
-*           isSeller: true
+*      example:
+*        name: Nurudeen
+*        email: ade@gmail.com
+*        isSeller: true
 */
+
+/**
+ * @swagger
+ * /api/user/signup:
+ *  post:
+ *    summary: Creates a new User
+ *    requestBody:
+ *      required: true
+ *      content:
+ *       application/json:
+ *         schema:
+ *           $ref: '#/components/schemas/User'
+ *    responses:
+ *      201:
+ *         description: The user is successfully created    
+ *      404:
+ *         description: The user is already exists
+ *      400:
+ *         description: The user is validation failed
+ *      500: 
+ *         description: internal Server Error
+ *          
+ *          
+ *          
+ */
 router.post('/signup', async (req, res) => {
     try {
         const { name, email, password, isSeller } = req.body;
